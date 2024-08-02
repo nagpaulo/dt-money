@@ -31,11 +31,16 @@ export const SearchFormContainer = styled.form`
         border-radius: 6px;
         cursor: pointer;
 
-        &:hover {
-            background: transparent;
-            border: 1px solid ${props => props.theme["green-300"]};
-            color: ${props => props.theme["green-300"]};
-            transition: background-color 2s, color 0.2s, border-color 0.2s;
+        &:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        &:not(:disabled):hover {
+            background: ${props => props.theme["green-500"]};
+            border-color: ${props => props.theme["green-500"]};
+            color: ${props => props.theme.white};
+            transition: background-color .2s, color 0.2s, border-color 0.2s;
         }
     }
 `
