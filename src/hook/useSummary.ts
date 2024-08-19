@@ -1,5 +1,5 @@
-import { useContext } from 'react'
 import { TransactionsContext } from '../context/TranscationContext'
+import { useContextSelector } from 'use-context-selector'
 
 interface resumeSummaryTransaction {
   income: number
@@ -8,7 +8,9 @@ interface resumeSummaryTransaction {
 }
 
 export function useSummary() {
-  const { transactions } = useContext(TransactionsContext)
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions
+  })
 
   const summary = transactions.reduce(
     (acc: resumeSummaryTransaction, transaction) => {
